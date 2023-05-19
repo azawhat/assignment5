@@ -10,4 +10,5 @@ public class BST<K extends Comparable<K>,V> {
             this.value = value;
         }
     }
+    public void put(K key, V value){}
 }
