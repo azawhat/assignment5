@@ -119,4 +119,11 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
             inorderWithEntries(node.right);
         }
 
+        public boolean hasNext() {
+            return currentIndex < entries.size();
+        }
+
+
+
+
 }
