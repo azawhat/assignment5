@@ -103,6 +103,8 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
 
 
     public class BSTIterator implements Iterator<Entry<K, V>> {
+        private List<Entry<K, V>> entries;
+
 
 
 }
