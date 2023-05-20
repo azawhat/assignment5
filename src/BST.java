@@ -106,6 +106,11 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         private List<Entry<K, V>> entries;
         private int currentIndex;
 
+        public BSTIterator() {
+            entries = new ArrayList<>();
+            inorderWithEntries(root);
+            currentIndex = 0;
+        }
 
 
 
