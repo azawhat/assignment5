@@ -123,6 +123,15 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
             return currentIndex < entries.size();
         }
 
+        public Entry<K, V> next() {
+            if (!hasNext())
+                throw new NoSuchElementException();
+            Entry<K, V> entry = entries.get(currentIndex);
+            currentIndex++;
+            return entry;
+        }
+    }
+
 
 
 
