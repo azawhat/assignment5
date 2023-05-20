@@ -64,18 +64,18 @@ public class BST<K extends Comparable<K>,V> {
             else if (node.right == null)
                 return node.left;
             else {
-                Node successor = findMin(node.right);
+                Node successor = findSuccessor(node.right);
                 node.key = successor.key;
                 node.value = successor.value;
-                node.right = deleteMin(node.right);
+                node.right = delete(node.right, node.key);
             }
         }
         return node;
     }
-    private Node findMin(Node node) {
-        if (node.left == null)
-            return node;
-        return findMin(node.left);
+    private Node findSuccessor(Node node) {
+        while (node.left != null)
+            node = node.left;
+        return node;
     }
     public Iterable<K> iterator(){}
 
