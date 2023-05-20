@@ -136,7 +136,10 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         private K key;
         private V value;
 
-
+        public Entry(K key, V value) {
+            this.key = key;
+            this.value = value;
+        }
     }
 
 
