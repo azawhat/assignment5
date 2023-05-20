@@ -96,10 +96,10 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         keys.add(node.key);
         inorder(node.right, keys);
     }
+
     public Iterator<Entry<K, V>> iterator() {
         return new BSTIterator();
     }
-
 
 
 
