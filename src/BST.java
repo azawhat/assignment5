@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BST<K extends Comparable<K>,V> {
     private Node root;
     private int size;
@@ -77,7 +79,13 @@ public class BST<K extends Comparable<K>,V> {
             node = node.left;
         return node;
     }
-    public Iterable<K> iterator(){}
+    public Iterable<K> keys() {
+        List<K> keys = new ArrayList<>();
+        inorder(root, keys);
+        return keys;
+    }
+
+
 
 
 }
