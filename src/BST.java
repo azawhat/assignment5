@@ -111,7 +111,12 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
             inorderWithEntries(root);
             currentIndex = 0;
         }
-
-
+        private void inorderWithEntries(Node node) {
+            if (node == null)
+                return;
+            inorderWithEntries(node.left);
+            entries.add(new Entry<>(node.key, node.value));
+            inorderWithEntries(node.right);
+        }
 
 }
