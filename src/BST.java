@@ -72,6 +72,11 @@ public class BST<K extends Comparable<K>,V> {
         }
         return node;
     }
+    private Node findMin(Node node) {
+        if (node.left == null)
+            return node;
+        return findMin(node.left);
+    }
     public Iterable<K> iterator(){}
 
 
