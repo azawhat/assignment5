@@ -132,6 +132,7 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         }
     }
 
+    public static class Entry<K, V> {
 
 
 
