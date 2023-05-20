@@ -1,6 +1,9 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
 
-public class BST<K extends Comparable<K>,V> {
+public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>> {
     private Node root;
     private int size;
     private class Node{
@@ -84,6 +87,19 @@ public class BST<K extends Comparable<K>,V> {
         inorder(root, keys);
         return keys;
     }
+
+
+    private void inorder(Node node, List<K> keys) {
+        if (node == null)
+            return;
+        inorder(node.left, keys);
+        keys.add(node.key);
+        inorder(node.right, keys);
+    }
+    public Iterator<Entry<K, V>> iterator() {
+        return new BSTIterator();
+    }
+
 
 
 
