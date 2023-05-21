@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>> {
-    private Node root;
-    private int size;
+    private Node root; // root node of BST
+    private int size; // number of nodes in BST
     private class Node{
-        private K key;
-        private V value;
-        private Node left, right;
+        private K key;  // key of node
+        private V value; // value that connected with key
+        private Node left, right; // left child and right child
 
         public Node(K key, V value ){
             this.key = key;
@@ -20,6 +20,7 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         root = put(root, key, value);
     }
 
+    // method to put key and value into BST
     private Node put(Node node, K key, V value) {
         if (node == null) {
             size++;
@@ -31,7 +32,7 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         else if (cmp > 0)
             node.right = put(node.right, key, value);
         else
-            node.value = value;
+            node.value = value;  // update value if it exists
         return node;
     }
 
@@ -39,7 +40,8 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         Node node = get(root, key);
         return (node != null) ? node.value : null;
     }
-    private Node get(Node node, K key) {
+
+    private Node get(Node node, K key) {  // method to get value with a key from BST
         if (node == null)
             return null;
         int cmp = key.compareTo(node.key);
@@ -55,7 +57,7 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         root = delete(root, key);
     }
 
-    private Node delete(Node node, K key) {
+    private Node delete(Node node, K key) {  // method to delete node with given key from BST
         if (node == null)
             return null;
         int cmp = key.compareTo(node.key);
@@ -77,7 +79,7 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
         }
         return node;
     }
-    private Node findSuccessor(Node node) {
+    private Node findSuccessor(Node node) {  //method to find successor node for deletion
         while (node.left != null)
             node = node.left;
         return node;
@@ -89,7 +91,7 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
     }
 
 
-    private void inorder(Node node, List<K> keys) {
+    private void inorder(Node node, List<K> keys) {  //method for in-order traversal of BST
         if (node == null)
             return;
         inorder(node.left, keys);
@@ -103,15 +105,15 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
 
 
     public class BSTIterator implements Iterator<Entry<K, V>> {
-        private List<Entry<K, V>> entries;
-        private int currentIndex;
+        private List<Entry<K, V>> entries;  // list of entries to iterate
+        private int currentIndex; // index on the list
 
         public BSTIterator() {
             entries = new ArrayList<>();
             inorderWithEntries(root);
             currentIndex = 0;
         }
-        private void inorderWithEntries(Node node) {
+        private void inorderWithEntries(Node node) {  // method to perform in-order traversal
             if (node == null)
                 return;
             inorderWithEntries(node.left);
@@ -133,8 +135,8 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
     }
 
     public static class Entry<K, V> {
-        private K key;
-        private V value;
+        K key;
+        V value;
 
         public Entry(K key, V value) {
             this.key = key;
