@@ -53,6 +53,30 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
             return node;
     }
 
+    public boolean contains(K key) {
+        return recursiveForContains(root, key);
+    }
+
+    private boolean recursiveForContains(Node root, K key) {
+        int cmp  = key.compareTo(root.key);
+        if (root == null) {
+            return false;
+        }
+
+        if (key == root.key) {
+            return true;
+        }
+
+        if (key < root.key) {
+            return recursiveForContains(root.left, key);
+        } else {
+            return recursiveForContains(root.right, key);
+        }
+    }
+
+
+
+
     public void delete(K key) {
         root = delete(root, key);
     }
@@ -143,6 +167,8 @@ public class BST<K extends Comparable<K>,V> implements Iterable<BST.Entry<K, V>>
             this.value = value;
         }
     }
+
+
 
 
 }
